@@ -5,7 +5,10 @@ class Api::MemosController < ApplicationController
       memo = Memo.new(create_params)
   
       # エラー処理
-      unless memo.save # もし、memoが保存できなかったら
+      if memo.save # もし、memoが保存できたら
+        memoj = {text: memo.text}
+        render :json => memoj
+      else
         @error_message = [memo.errors.full_messages].compact # エラーが入ってるインスタンス変数を定義
       end
     end

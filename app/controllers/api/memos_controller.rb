@@ -5,7 +5,7 @@ class Api::MemosController < ApplicationController
       # ret = {text: "text"}
       # render :json => ret
       memo = Memo.new
-      memo.text = params["text"]
+      memo.text = params[:text]
   
       # エラー処理
       if memo.save # もし、memoが保存できたら
@@ -21,8 +21,8 @@ class Api::MemosController < ApplicationController
     end
   
     def index
-      # ret = {text: "text",check: "ccc"}
-      # render :json => ret
+      ret = Memo.all
+      render :json => ret
     end
   
     # private

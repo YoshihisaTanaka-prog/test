@@ -6,10 +6,11 @@ class Api::MemosController < ApplicationController
       # render :json => ret
       memo = Memo.new
       memo.text = params[:text]
+      memo.title = params[:title]
   
       # エラー処理
       if memo.save # もし、memoが保存できたら
-        memoj = {text: memo.text, check: "check"}
+        memoj = {text: memo.text, title: memos.title}
         memojs = []
         memojs.push(memoj)
         memojs.push(memoj)

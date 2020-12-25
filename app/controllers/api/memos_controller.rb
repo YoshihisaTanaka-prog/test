@@ -4,7 +4,8 @@ class Api::MemosController < ApplicationController
     def create
       # ret = {text: "text"}
       # render :json => ret
-      memo = Memo.new(create_params)
+      memo = Memo.new
+      memo.text = params["text"]
   
       # エラー処理
       if memo.save # もし、memoが保存できたら
@@ -21,8 +22,8 @@ class Api::MemosController < ApplicationController
       # render :json => ret
     end
   
-    private
-    def create_params
-      params.permit(:text)
-    end
+    # private
+    # def create_params
+    #   params.permit(:text)
+    # end
 end

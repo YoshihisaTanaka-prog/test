@@ -11,10 +11,7 @@ class Api::MemosController < ApplicationController
       # エラー処理
       if memo.save # もし、memoが保存できたら
         memoj = {text: memo.text, title: memos.title}
-        memojs = []
-        memojs.push(memoj)
-        memojs.push(memoj)
-        render :json => memojs
+        render :json => memoj
       else
         @error_message = [memo.errors.full_messages].compact # エラーが入ってるインスタンス変数を定義
         render :json => @error_message
@@ -24,6 +21,21 @@ class Api::MemosController < ApplicationController
     def index
       ret = Memo.all
       render :json => ret
+    end
+
+    def update
+      memo = Memo.where(id: params["id"]).last
+      memo.text = params[:text]
+      memo.title = params[:title]
+  
+      # エラー処理
+      if memo.save # もし、memoが保存できたら
+        memoj = {text: memo.text, title: memos.title}
+        render :json => memoj
+      else
+        @error_message = [memo.errors.full_messages].compact # エラーが入ってるインスタンス変数を定義
+        render :json => @error_message
+      end
     end
   
     # private

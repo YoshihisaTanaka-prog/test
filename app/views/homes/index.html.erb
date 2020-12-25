@@ -1,0 +1,15 @@
+
+<hr>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>TiTle</th>
+    </tr>
+    <% @memos.each do |m| %>
+        <tr>
+            <td><%= m.id %></td>
+            <td><%= link_to m.title, detail_path(:id => m.id) %></td>
+        </tr>
+    <% end %>
+</table>

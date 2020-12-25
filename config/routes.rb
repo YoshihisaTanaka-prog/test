@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   root to: 'homes#index'
   post 'create', to: 'homes#create'
-  get 'detail', to: 'hpomes#detail'
+  get 'detail', to: 'homes#detail'
   
 end

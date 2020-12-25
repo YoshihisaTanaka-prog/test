@@ -1,5 +1,5 @@
 class Api::MemosController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: :create # どうやらこの記述が必要
+    skip_before_action :verify_authenticity_token, only: [:create, :update] # どうやらこの記述が必要
   
     def create
       # ret = {text: "text"}

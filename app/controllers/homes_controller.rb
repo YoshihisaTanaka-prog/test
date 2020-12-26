@@ -5,7 +5,7 @@ class HomesController < ApplicationController
     end
 
     def detail
-        memo = Memo.where(id: params["id"]).last
+        @memo = Memo.where(id: params["id"]).last
     end
 
 end

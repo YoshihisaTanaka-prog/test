@@ -1,14 +1,19 @@
+<%= form_tag(api_memo_path(:id => @memo.id), method: :put) do %>
 <table>
 <tr>
     <th>ID</th>
-    <td><%= memo.id %></td>
+    <td><%= @memo.id %></td>
 </tr>
 <tr>
     <th>Title</th>
-    <td><%= memo.title %></td>
+    <td><%= text_field_tag :title, @memo.title %></td>
 </tr>
 <tr>
     <th>Text</th>
-    <td><%= memo.text %></td>
+    <td><%= text_area_tag :text, @memo.text %></td>
 </tr>
 </table>
+<%= submit_tag "編集" %>
+<% end %>
+
+<%# link_to "アップデート" , api_memos_update_path(:id => @memo.id, :title => @memo.title, :text => @memo.text), method: :post %>

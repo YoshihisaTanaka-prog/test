@@ -1,3 +1,16 @@
+<%= form_tag(api_memos_path, method: :post) do %>
+<table>
+<tr>
+    <th>Title</th>
+    <td><%= text_field_tag :title %></td>
+</tr>
+<tr>
+    <th>Text</th>
+    <td><%= text_area_tag :text %></td>
+</tr>
+</table>
+<%= submit_tag "追加" %>
+<% end %>
 
 <hr>
 
@@ -5,11 +18,13 @@
     <tr>
         <th>ID</th>
         <th>TiTle</th>
+        <th></th>
     </tr>
     <% @memos.each do |m| %>
         <tr>
             <td><%= m.id %></td>
             <td><%= link_to m.title, detail_path(:id => m.id) %></td>
+            <td><%= link_to "削除", api_memo_path(:id => m.id), method: :delete %>
         </tr>
     <% end %>
 </table>

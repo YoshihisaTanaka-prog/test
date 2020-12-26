@@ -18,7 +18,7 @@ class Api::MemosController < ApplicationController
     end
   
     def index
-      ret = Memo.all
+      ret = Memo.all.order(id:)
       render :json => ret
     end
 

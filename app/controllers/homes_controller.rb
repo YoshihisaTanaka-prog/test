@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
 
     def index
-        @memos = Memo.all.order(id:)
+        @memos = Memo.all.order(:id)
     end
 
     def detail
